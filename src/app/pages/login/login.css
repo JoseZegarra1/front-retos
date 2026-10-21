@@ -1,0 +1,33 @@
+/* El formulario usa las clases compartidas .auth-* de styles.css; aquí solo va el layout de dos columnas. */
+:host {
+  display: block;
+}
+
+.login {
+  /* 40/60: la imagen es horizontal y su logo ocupa casi todo el ancho; con 50/50 se recorta en laptops */
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+}
+
+/* Columna de la imagen decorativa */
+.login-visual {
+  position: relative;
+}
+.login-visual img {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  object-fit: cover;
+  object-position: 52% 50%; /* centrado sobre el logo de login.jpg; revisar si cambias la imagen */
+  border-radius: 16px;
+}
+
+@media (max-width: 1023.98px) {
+  .login {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .login-visual {
+    display: none;
+  }
+}

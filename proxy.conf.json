@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://app-kyndryl-jose.azurewebsites.net",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

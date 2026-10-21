@@ -1,0 +1,24 @@
+@if (showNav()) {
+  <header class="topbar">
+    <a class="brand" [routerLink]="auth.homeUrl()">Retos técnicos</a>
+    <nav>
+      @if (auth.hasRole('USER')) {
+        <a routerLink="/mi-reto" routerLinkActive="active">Mi reto</a>
+      }
+      @if (auth.hasRole('GHD', 'ADMIN')) {
+        <a routerLink="/retos" routerLinkActive="active">Retos</a>
+        <a routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+      }
+      @if (auth.hasRole('ADMIN')) {
+        <a routerLink="/plantillas" routerLinkActive="active">Carpetas de código</a>
+      }
+    </nav>
+    <div class="session">
+      <span class="who">{{ auth.user()?.fullName }} · {{ roleLabel[auth.user()!.role] }}</span>
+      <a routerLink="/cambiar-clave" class="link-btn">Contraseña</a>
+      <button class="btn small" (click)="auth.logout()">Salir</button>
+    </div>
+  </header>
+}
+
+<router-outlet />
